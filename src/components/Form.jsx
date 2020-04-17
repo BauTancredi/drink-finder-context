@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CategoriesContext } from "../context/CategoriesContext";
 import { RecipesContext } from "../context/RecipesContext";
 
@@ -9,7 +9,7 @@ const Form = () => {
   });
 
   const { categories } = useContext(CategoriesContext);
-  const { searchRecipes } = useContext(RecipesContext);
+  const { searchRecipes, setConsult } = useContext(RecipesContext);
 
   const handleChange = (e) => {
     setSearch({
@@ -25,6 +25,7 @@ const Form = () => {
       onSubmit={(e) => {
         e.preventDefault();
         searchRecipes(search);
+        setConsult(true);
       }}
     >
       <fieldset className="text-center">
